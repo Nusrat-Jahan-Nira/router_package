@@ -4,6 +4,7 @@ import 'package:router_package/home_page.dart';
 import 'package:router_package/page_one.dart';
 import 'package:router_package/page_one_details.dart';
 import 'package:router_package/page_two.dart';
+import 'package:router_package/profile_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,6 +34,16 @@ class MyApp extends StatelessWidget {
         name: HomePage.routeName,
         path: '/',
         builder: (context, state) => const HomePage(),
+        routes: [
+          GoRoute(
+            name: ProfilePage.routeName,
+            path: 'profile/:id',
+            builder: (context, state){
+              final id = state.pathParameters['id']!;
+              return ProfilePage(id: int.parse(id));
+            },
+          )
+        ]
       ),
       GoRoute(
         name: PageOne.routeName,

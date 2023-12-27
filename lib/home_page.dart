@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:router_package/page_one.dart';
 import 'package:router_package/page_two.dart';
+import 'package:router_package/profile_page.dart';
 
 class HomePage extends StatelessWidget {
-
   static const String routeName = 'home';
 
   const HomePage({super.key});
@@ -20,18 +20,28 @@ class HomePage extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 // context.go('/one');
                 context.goNamed(PageOne.routeName);
               },
               child: const Text('Page One'),
             ),
             ElevatedButton(
-              onPressed: (){
+              onPressed: () {
                 // context.go('/two');
                 context.goNamed(PageTwo.routeName);
               },
               child: const Text('Page Two'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                // context.go('/two');
+                context.goNamed(
+                  ProfilePage.routeName,
+                  pathParameters: {'id': '5'},
+                );
+              },
+              child: const Text('My Profile'),
             )
           ],
         ),
