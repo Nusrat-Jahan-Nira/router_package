@@ -30,20 +30,24 @@ class MyApp extends StatelessWidget {
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
+        name: HomePage.routeName,
         path: '/',
         builder: (context, state) => const HomePage(),
       ),
       GoRoute(
+        name: PageOne.routeName,
         path: '/one',
         builder: (context, state) => const PageOne(),
         routes: [
           GoRoute(
+            name: PageOneDetails.routeName,
             path: 'one-details',
             builder: (context, state) => const PageOneDetails(),
           ),
         ]
       ),
       GoRoute(
+        name: PageTwo.routeName,
         path: '/two',
         builder: (context, state) => const PageTwo(),
       )

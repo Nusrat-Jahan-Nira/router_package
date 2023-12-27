@@ -2,6 +2,9 @@
 import 'package:flutter/material.dart';
 
 class PageTwo extends StatelessWidget {
+
+  static const String routeName = 'two';
+
   const PageTwo({super.key});
 
   @override
