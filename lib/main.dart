@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: true,
       title: 'Flutter Demo',
       routerConfig: _router,
       theme: ThemeData(
@@ -60,7 +61,10 @@ class MyApp extends StatelessWidget {
       GoRoute(
         name: PageTwo.routeName,
         path: '/two',
-        builder: (context, state) => const PageTwo(),
+        builder: (context, state) {
+          final msg = state.extra! as String;
+          return PageTwo(greetings: msg);
+        },
       )
     ],
   );

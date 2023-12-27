@@ -29,7 +29,7 @@ class HomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 // context.go('/two');
-                context.goNamed(PageTwo.routeName);
+                context.goNamed(PageTwo.routeName, extra: 'Hello Flutter!');
               },
               child: const Text('Page Two'),
             ),
