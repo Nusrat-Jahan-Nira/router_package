@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:router_package/home_page.dart';
+import 'package:router_package/login_page.dart';
 import 'package:router_package/page_one.dart';
 import 'package:router_package/page_one_details.dart';
 import 'package:router_package/page_two.dart';
 import 'package:router_package/profile_page.dart';
+
+bool loggedIn = true;
 
 void main() {
   runApp(MyApp());
@@ -30,6 +33,14 @@ class MyApp extends StatelessWidget {
   final _router = GoRouter(
     initialLocation: '/',
     debugLogDiagnostics: true,
+    redirect: (context, state) {
+
+      if(!loggedIn){
+        return '/login';
+      }
+
+      return null;
+    },
     routes: [
       GoRoute(
         name: HomePage.routeName,
@@ -64,6 +75,12 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           final msg = state.extra! as String;
           return PageTwo(greetings: msg);
+        },
+      ),
+      GoRoute(
+        path: '/login',
+        builder: (context, state) {
+          return const LoginPage();
         },
       )
     ],
